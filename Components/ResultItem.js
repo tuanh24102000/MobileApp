@@ -6,6 +6,9 @@ const ResultItem = ({result, navigation }) => {
   const detailResult = () => {
     navigation.navigate("Detail", {result})
   }
+  const updateResult= () => {
+    navigation.navigate("Update", {result})
+  }
   return (
     <View style= {styles.container}>
       <View>
@@ -13,10 +16,10 @@ const ResultItem = ({result, navigation }) => {
         <Text style={styles.text}>Activity Name: {result.Activityname} </Text>
         <Text style={styles.text}>Location: {result.Location}</Text>
         <Text style={styles.text}>Date: {result.Date}</Text>
-        <Text style={styles.text}>Time of attending: {result.Timeofattending}</Text>
+        <Text style={styles.text} >Time of attending: {result.Timeofattending}</Text>
         <Text style={styles.text}>Name of reporter: {result.Nameofreporter}</Text>
         </View>
-
+    <View>
     <TouchableOpacity onPress = {detailResult} style = {styles.button}>
       <Text style = {{
         alignItems:"center",
@@ -27,6 +30,20 @@ const ResultItem = ({result, navigation }) => {
         color:"white"
       }}>Detail</Text>
     </TouchableOpacity>
+    <TouchableOpacity
+    onPress={updateResult}
+    style= {styles.button}>
+      <Text
+      style= {{
+        alignItems:"center",
+        justifyContent:"center",
+        paddingHorizontal:20,
+        fontSize:12,
+        textTransform:"uppercase",
+        color:"white"
+      }}>Update</Text>
+    </TouchableOpacity>
+    </View>
     </View>
   )
 }
@@ -43,7 +60,7 @@ const styles = StyleSheet.create({
         marginBottom: "5%",
       },
       text: {
-        fontSize: 20,
+        fontSize: 15,
         fontWeight: "bold",
       },
       textTitle: {
@@ -59,12 +76,12 @@ const styles = StyleSheet.create({
       },
       button: {
         paddingLeft: 2,
-        width: 90,
+        width: 100,
         height: 50,
         borderWidth: 3,
         backgroundColor: "blue",
         fontSize: 250,
-        alignItems: "flex-end",
+        alignItems: "center",
         justifyContent: "center",
         borderRadius: 5,
         marginTop:20,
