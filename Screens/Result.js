@@ -6,19 +6,19 @@ import ResultItem from '../Components/ResultItem'
 const database = SQLite.openDatabase("dbName", 2.0)
 
 const Result = ({navigation}) => {
-    const [activityname, setActivityname] = useState("")
+    /*const [activityname, setActivityname] = useState("")
     const [location, setLocation] = useState("");
     const [date, setDate] = useState("");
     const [timeofattending, setTimeofattending] = useState("");
-    const [nameofreporter, setNameofreporter] = useState("");
+    const [nameofreporter, setNameofreporter] = useState("");*/
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        getData();
+        /*getData();*/
         getResult();
     }, [])
 
-    const getData = () => {
+    /*const getData = () => {
         try {
             database.transaction((tx) => {
               console.log(123);
@@ -43,8 +43,7 @@ const Result = ({navigation}) => {
           } catch (error) {
             console.log(error);
           }
-    }
-
+    }*/
     const getResult = () => {
         try {
           database.transaction((tx) => {
