@@ -1,4 +1,4 @@
-import { View, Text, Alert, TextInput, StyleSheet, TouchableOpacity} from 'react-native'
+import { View, Text, Alert, TextInput, StyleSheet, TouchableOpacity, ScrollView} from 'react-native'
 import React, {useEffect, useState} from 'react'
 import CustomButton from '../Components/CustomButton'
 import * as SQlite from "expo-sqlite"
@@ -52,8 +52,8 @@ const Home = ({navigation}) => {
     const search = () => {
       navigation.navigate("Search")
     };
-    const confirmDialog = () => {
-      navigation.navigate("ConfirmDialog")
+    const notification = () => {
+      navigation.navigate("Notification")
     };
     const createTable = () => {
         database.transaction((tx) => {
@@ -63,6 +63,7 @@ const Home = ({navigation}) => {
         });
       };
       return (
+        <ScrollView>
         <View style={styles.body}>
           <Text style={styles.text}>Home</Text>
           <TextInput
@@ -73,7 +74,7 @@ const Home = ({navigation}) => {
           />
           <TextInput
             style={styles.input}
-            placeholder="Location (Required)"
+            placeholder="Location"
             onChangeText={(value) => setLocation(value)}
             value={location}
           />
@@ -90,7 +91,7 @@ const Home = ({navigation}) => {
             customStyles={{
               dateInput: {
                 marginLeft: 36,
-                fontSize: 20,
+                fontSize: 15,
               },
               dateIcon: {
                 position: 'relative',
@@ -115,24 +116,25 @@ const Home = ({navigation}) => {
             onChangeText={(value) => setNameofreporter(value)}
             value={nameofreporter}
           />
+          <CustomButton title="Submit" handlePress={submit}/>
           <View style = {{flexDirection:"row"}}>
           <CustomButton title="Show All" handlePress ={showResult} />
           <CustomButton title="Search" handlePress= {search}/>
-          <CustomButton title="Submit" handlePress={submit}/>
           </View>
           <TouchableOpacity
-          onPress={confirmDialog}
+          onPress={notification}
           style={styles.touch}>
             <Text
             style = {{
               alignItems:"center",
               justifyContent:"center",
               paddingHorizontal:20,
-              fontSize:20,
+              fontSize:15,
               textTransform:"uppercase",
-              color:"black"}}> Confirmation Diaglog</Text>
+              color:"black"}}>Notification</Text>
           </TouchableOpacity>
         </View>
+        </ScrollView>
         )
 }
 
@@ -153,7 +155,7 @@ const styles = StyleSheet.create({
       width: 300,
       borderRadius: 5,
       textAlign: "center",
-      fontSize: 20,
+      fontSize: 15,
       marginBottom: 10,
       marginTop: 10,
     },
@@ -166,11 +168,11 @@ const styles = StyleSheet.create({
     },
     touch:
     {
-      paddingLeft: 2,
+      paddingLeft: 1,
       width: 370,
       height: 50,
       borderWidth: 3,
-      backgroundColor: "yellow",
+      backgroundColor: "orange",
       fontSize: 250,
       alignItems: "center",
       justifyContent: "center",

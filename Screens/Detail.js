@@ -35,7 +35,7 @@ const Detail  = ({ route, navigation }) => {
     }}>
     <Text
     style = {{
-    fontSize: 40,
+    fontSize: 30,
     fontWeight: "bold",
     margin: 15,
     }} >Detail</Text>

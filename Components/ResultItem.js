@@ -76,15 +76,15 @@ const styles = StyleSheet.create({
       },
       button: {
         paddingLeft: 2,
-        width: 100,
+        width: 120,
         height: 50,
         borderWidth: 3,
-        backgroundColor: "blue",
+        backgroundColor: "tomato",
         fontSize: 250,
         alignItems: "center",
         justifyContent: "center",
         borderRadius: 5,
-        marginTop:20,
+        marginTop:40,
         marginHorizontal:5,
       }
 })

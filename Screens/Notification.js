@@ -5,14 +5,14 @@ import { Audio } from 'expo-av';
 import CustomButton from "../Components/CustomButton";
 
 
-const ConfirmDialog = () => {
+const Notification = () => {
     const [modalVisible, setModalVisible] = useState(false);
     const turnModal = () => {
         setModalVisible(!modalVisible);
       };
     const RingABell = async () => {
         const { sound } = await Audio.Sound.createAsync(
-        require("../assets/beep.mp3")
+        require("../assets/bell.mp3")
         );
         await sound.playAsync();
       };
@@ -25,7 +25,7 @@ const ConfirmDialog = () => {
             flex: 1,
             justifyContent: 'center',
             alignItems: 'center',
-            marginTop: 22,
+            marginBottom: 100,
         }}>
         <View>
         <CustomButton
@@ -40,7 +40,8 @@ const ConfirmDialog = () => {
         <View
         style = {{
             margin: 20,
-            backgroundColor: 'lightblue',
+            marginTop: 50,
+            backgroundColor: "rgb(60, 179,113)",
             borderRadius: 20,
             padding: 35,
             justifyContent: 'center',
@@ -52,13 +53,13 @@ const ConfirmDialog = () => {
                 },
             }}>
         <Text style={{
-            marginBottom: 15,
+            marginBottom: 20,
             textAlign: "center",
             fontSize:20
-            }}>Confirmaion Dialog Box</Text>
+            }}>Notification</Text>
             <TouchableOpacity
             style = {{
-                width: 370,
+                width: 300,
                 height: 50,
                 borderWidth: 3,
                 backgroundColor: "lightblue",
@@ -83,7 +84,7 @@ const ConfirmDialog = () => {
             </TouchableOpacity> 
             <TouchableOpacity
             style = {{
-                width: 370,
+                width: 300,
                 height: 50,
                 borderWidth: 3,
                 backgroundColor: "lightblue",
@@ -108,7 +109,7 @@ const ConfirmDialog = () => {
             </TouchableOpacity> 
             <TouchableOpacity
             style = {{
-                width: 370,
+                width: 300,
                 height: 50,
                 borderWidth: 3,
                 backgroundColor: "lightblue",
@@ -136,4 +137,4 @@ const ConfirmDialog = () => {
         </View>
     )
 }
-export default ConfirmDialog;
+export default Notification;

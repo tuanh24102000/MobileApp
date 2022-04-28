@@ -25,10 +25,10 @@ useEffect(() =>{
 }, [])
   const updateHandle = () => {
     if (activityname.length === 0) {
-        Alert.alert("Warning !!! Please enter activity name");
+        Alert.alert("Please enter activity name");
       }
-      else if( date.length === 0){Alert.alert("Warning !!! Please enter datetime")}
-      else if( nameofreporter.length === 0){Alert.alert("Warning !!! Please select furniture type")}
+      else if( date.length === 0){Alert.alert("Please enter date")}
+      else if( nameofreporter.length === 0){Alert.alert("Please enter name of reporter")}
       else {
         try {
           db.transaction((tx) => {
