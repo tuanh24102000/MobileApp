@@ -1,4 +1,4 @@
-import { View, Text, Alert, TextInput, StyleSheet } from 'react-native'
+import { View, Text, Alert, TextInput, StyleSheet, TouchableOpacity} from 'react-native'
 import React, {useEffect, useState} from 'react'
 import CustomButton from '../Components/CustomButton'
 import * as SQlite from "expo-sqlite"
@@ -51,6 +51,9 @@ const Home = ({navigation}) => {
     };
     const search = () => {
       navigation.navigate("Search")
+    };
+    const confirmDialog = () => {
+      navigation.navigate("ConfirmDialog")
     };
     const createTable = () => {
         database.transaction((tx) => {
@@ -117,6 +120,18 @@ const Home = ({navigation}) => {
           <CustomButton title="Search" handlePress= {search}/>
           <CustomButton title="Submit" handlePress={submit}/>
           </View>
+          <TouchableOpacity
+          onPress={confirmDialog}
+          style={styles.touch}>
+            <Text
+            style = {{
+              alignItems:"center",
+              justifyContent:"center",
+              paddingHorizontal:20,
+              fontSize:20,
+              textTransform:"uppercase",
+              color:"black"}}> Confirmation Diaglog</Text>
+          </TouchableOpacity>
         </View>
         )
 }
@@ -125,7 +140,7 @@ const styles = StyleSheet.create({
     body: {
       flex: 1,
       alignItems: "center",
-      justifyContent: "flex-start",
+      justifyContent: "center",
     },
     text: {
       fontSize: 40,
@@ -149,6 +164,20 @@ const styles = StyleSheet.create({
       width: 370,
       fontSize:20,
     },
+    touch:
+    {
+      paddingLeft: 2,
+      width: 370,
+      height: 50,
+      borderWidth: 3,
+      backgroundColor: "yellow",
+      fontSize: 250,
+      alignItems: "center",
+      justifyContent: "center",
+      borderRadius: 5,
+      marginTop:20,
+      marginHorizontal:5,
+    }
   });
 
 export default Home
