@@ -7,6 +7,7 @@ import DatePicker from 'react-native-datepicker';
 const db = SQLite.openDatabase("dbName", 2.0);
 
 const Update  = ({ route, navigation }) => {
+    const [updateId, setUpdateId] = useState("");
     const [activityname, setActivityname] = useState("");
     const [location, setLocation] = useState("");
     const [date, setDate] = useState("");
@@ -14,23 +15,28 @@ const Update  = ({ route, navigation }) => {
     const [nameofreporter, setNameofreporter] = useState("");
  //const { result } = route.params;
 
-
+useEffect(() =>{
+  setUpdateId(route.params.Id);
+  setActivityname(route.params.Activityname);
+  setLocation(route.params.Location);
+  setDate(route.params.Date);
+  setTimeofattending(route.params.Timeofattending);
+  setNameofreporter(route.params.Nameofreporter);
+}, [])
   const updateHandle = () => {
     if (activityname.length === 0) {
         Alert.alert("Warning !!! Please enter activity name");
       }
-      else if( location.length === 0){Alert.alert("Warning !!! Please select bedroom")}
       else if( date.length === 0){Alert.alert("Warning !!! Please enter datetime")}
-      else if( timeofattending.length === 0){Alert.alert("Warning !!! Please enter monthly price")}
       else if( nameofreporter.length === 0){Alert.alert("Warning !!! Please select furniture type")}
       else {
         try {
           db.transaction((tx) => {
             tx.executeSql(
-                'UPDATE DATABASE SET Activityname=?, Location=?, Date=?, Timeofattending=?, Nameofreporter=? WHERE Id=?',
-                [activityname, location, date, timeofattending, nameofreporter],
+                'UPDATE DATABASE SET Activityname = ?, Location = ?, Date = ?, Timeofattending = ?, Nameofreporter = ? WHERE Id = ?',
+                [activityname, location, date, timeofattending, nameofreporter, updateId],
               (tx, results) => {
-                console.log(results.rowsAffected);
+                console.log('Result',results.rowsAffected);
               }
             );
           });
